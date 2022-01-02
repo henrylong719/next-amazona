@@ -26,6 +26,7 @@ export default function Payment() {
   const {
     cart: { shippingAddress },
   } = state;
+
   useEffect(() => {
     if (!shippingAddress.address) {
       router.push('/shipping');
@@ -33,6 +34,7 @@ export default function Payment() {
       setPaymentMethod(Cookies.get('paymentMethod') || '');
     }
   }, []);
+
   const submitHandler = (e) => {
     closeSnackbar();
     e.preventDefault();
@@ -44,6 +46,7 @@ export default function Payment() {
       router.push('/placeorder');
     }
   };
+
   return (
     <Layout title="Payment Method">
       <CheckoutWizard activeStep={2}></CheckoutWizard>
